@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="APPIUM实战Android篇(关键字)" parallel="tests" thread-count="2">
+	<!--server地址 -->
+	<parameter name="serverURL" value="http://127.0.0.1:4444/wd/hub" />
+	<!--automationName为selendroid or appium，如果sdk版本>=17请使用appium；如果sdk版本<=17请使用selendroid -->
+	<parameter name="automationName" value="Appium" />
+	<!-- 测试平台 iOS和Android -->
+	<parameter name="platformName" value="Android" />
+	<!-- 平台版本 -->
+	<parameter name="platformVersion" value="4.4.2" />
+	<!-- android app路径 -->
+	<parameter name="androidAppPath" value="res/app/android/bing.apk" />
+	<!-- ios app路径 -->
+	<parameter name="iosAppPath" value="res/app/ios/xxx.app" />
+	<!--app的包 -->
+	<parameter name="appPackage" value="com.microsoft.bing" />
+	<!--app的 activity -->
+	<parameter name="appActivity" value="com.microsoft.clients.bing.app.MainActivity" />
+	<!--是否支持unicode输入设置为true可以输入中文字符 -->
+	<parameter name="unicodeKeyboard" value="true" />
+	<!-- 重置键盘输入法 -->
+	<parameter name="resetKeyboard" value="true" />
+	<!-- 设置为true之后会覆盖当前session -->
+	<parameter name="sessionOverride" value="true" />
+	<!-- 进程等待1秒中的控制时间，单位是秒 -->
+	<parameter name="sleepTime" value="1" />
+	<!-- 页面元素15秒不出现超时时间 -->
+	<parameter name="elementTimeOut" value="15" />
+	<!-- app属性文件 -->
+	<parameter name="appFilePath" value="res/properties/app.properties" />
+
+	<test name="首页">
+		<parameter name="udid" value="emulator-5678" />
+		<parameter name="deviceName" value="appium-test-avd-1" />
+		<packages>
+			<package name="com.young.appiumcombat.testcases.android.home" />
+		</packages>
+	</test>
+
+	<test name="搜索">
+		<parameter name="udid" value="emulator-5676" />
+		<parameter name="deviceName" value="appium-test-avd" />
+		<packages>
+			<package name="com.young.appiumcombat.testcases.android.search" />
+		</packages>
+	</test>
+
+
+
+	<listeners>
+		<!-- excel报告 -->
+		<listener
+			class-name="com.young.appiumcombat.plugins.excelReporter.TestResultListener" />
+		<listener class-name="com.young.appiumcombat.plugins.excelReporter.ExcelReporter" />
+
+		<!-- html报告 <listener class-name="com.young.appiumcombat.plugins.htmlReporter.TestResultListener" 
+			/> <listener class-name="com.young.appiumcombat.plugins.htmlReporter.RetryListener" 
+			/> <listener class-name="com.young.appiumcombat.plugins.htmlReporter.PowerEmailableReporter" 
+			/> -->
+	</listeners>
+</suite> 
